@@ -13,10 +13,10 @@ class DetailActivity : AppCompatActivity() {
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val buahName = intent.getStringExtra("buah_name").toString()
-        val buahDescription = intent.getStringExtra("buah_description").toString()
-        val buahPrice = intent.getStringExtra("buah_price").toString()
-        val buahPict = intent.getIntExtra("buah_pict", 0)
+        val buahName = intent.getStringExtra("fruit_name").toString()
+        val buahDescription = intent.getStringExtra("fruit_description").toString()
+        val buahPrice = intent.getStringExtra("fruit_price").toString()
+        val buahPict = intent.getIntExtra("fruit_pict", 0)
 
         with(binding){
             txtNamaBuah.text = buahName

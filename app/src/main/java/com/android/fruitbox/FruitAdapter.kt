@@ -7,38 +7,38 @@ import com.android.fruitbox.databinding.ItemListBinding
 
 typealias OnClickBuah = (Fruit) -> Unit
 
-class FruitAdapter(private val listBuah: List<Fruit>, private val onClickBuah: (Fruit) -> Unit) :
-    RecyclerView.Adapter<FruitAdapter.ItemBuahViewHolder>() {
+class FruitAdapter(private val listBuah: List<Fruit>, private val onClickFruit: (Fruit) -> Unit) :
+    RecyclerView.Adapter<FruitAdapter.FruitItemViewHolder>() {
 
-    inner class ItemBuahViewHolder(val binding: ItemListBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class FruitItemViewHolder(val binding: ItemListBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(data: Fruit) {
             with(binding) {
                 itemName.text = data.name
                 itemPrice.text = data.price
 
                 itemView.setOnClickListener {
-                    onClickBuah(data)
+                    onClickFruit(data)
                 }
             }
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemBuahViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FruitItemViewHolder {
         val binding = ItemListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ItemBuahViewHolder(binding)
+        return FruitItemViewHolder(binding)
     }
 
     override fun getItemCount(): Int {
         return listBuah.size
     }
 
-    override fun onBindViewHolder(holder: ItemBuahViewHolder, position: Int) {
-        val buah = listBuah[position]
-        holder.bind(buah)
-        holder.binding.itemPict.setImageResource(buah.pict)
+    override fun onBindViewHolder(holder: FruitItemViewHolder, position: Int) {
+        val fruit = listBuah[position]
+        holder.bind(fruit)
+        holder.binding.itemPict.setImageResource(fruit.pict)
 
         holder.itemView.setOnClickListener {
-            onClickBuah(buah)
+            onClickFruit(fruit)
         }
     }
 
